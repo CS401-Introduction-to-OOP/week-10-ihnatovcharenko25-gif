@@ -25,6 +25,13 @@ public class EventLog : IEnumerable<Event>
     {
         return GetEnumerator();
     }
+    
+    public IEnumerable<Event> GetEventsByType(string type)
+    {
+        foreach (Event e in _events)
+            if (e.Type == type)
+                yield return e;
+    }
 
     
 }

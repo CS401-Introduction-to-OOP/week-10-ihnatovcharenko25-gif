@@ -28,21 +28,23 @@ public class Party : IEnumerable<Character>
         return GetEnumerator();
     }
     
-    public IEnumerator<Character> GetIAliveEnumerator()
+    public IEnumerable<Character> GetIAliveEnumerator()
     {
         foreach (Character c in _characters)
             if (c.State == "Alive")
                 yield return c;
     }
     
-    public IEnumerator<Character> GetLowHpEnumerator(int hp)
+    public IEnumerable<Character> GetLowHpEnumerator(int hp)
     {
         foreach (Character c in _characters)
             if (c.Health < hp)
                 yield return c;
     }
 
-    public IEnumerator<Character> WhereLevelHigher(int level)
+    
+     public IEnumerator<Character> WhereLevelHigher(int level)
+     
         => _characters.Where<Character>(c => c.Rank > level).GetEnumerator();
     
     public IEnumerator<Character> OrderByLevel()
@@ -50,6 +52,5 @@ public class Party : IEnumerable<Character>
 
     public Character MaxLevel()
         => _characters.MaxBy(c => c.Rank);
-
 
 }
