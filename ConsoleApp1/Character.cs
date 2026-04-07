@@ -21,6 +21,6 @@ public class Character
 
     public override string ToString()
     {
-        return $"{Name}, {Class}";
+        return $"{Name}, {Class} - {Health} hp, {Gold} gold";
     }
 }

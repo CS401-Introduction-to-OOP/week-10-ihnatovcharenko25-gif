@@ -36,7 +36,7 @@ while (run)
         case "2":
         {
             ev_i++;
-            myEventLog.Add(new Event(ev_i, $"description_{ev_i}", $"type_{ev_i}", $"change_{ev_i}"));
+            myEventLog.Add(new Event(ev_i, $"description_{ev_i}", $"Battle", $"change_{ev_i}"));
             break;
         }
         case "3":
@@ -60,14 +60,22 @@ while (run)
                 Console.WriteLine(c);
             break;
         }
+        case "6":
+        {
+            Console.Write("Wounded (<50hp):");
+            foreach (var c in myParty.GetWounded())
+                Console.WriteLine(c);
+            break;
+        }
+        case "7":
+        {
+            Console.WriteLine("Battle event");
+            foreach (var e in myEventLog.GetEventsByType("Battle"))
+                Console.WriteLine(e);
+            break;
+        }
+        default:
+            Console.WriteLine("Try something else, invalid command");
+            break;
     }
 }
-
-
-Console.WriteLine("Enter 'new' to create a character");
-while (Console.ReadLine() == "new")
-{
-    
-}
-
-Console.WriteLine(myParty.MaxLevel());

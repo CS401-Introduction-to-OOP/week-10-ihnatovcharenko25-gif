@@ -14,5 +14,9 @@ public class Event
         Type = type;
         Change = change;
     }
-    
+
+    public override string ToString()
+    {
+        return $"Event {NumberMove} - {Description} - {Type} - {Change}";
+    }
 }

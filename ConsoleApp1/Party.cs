@@ -43,8 +43,7 @@ public class Party : IEnumerable<Character>
     }
 
     
-     public IEnumerator<Character> WhereLevelHigher(int level)
-     
+    public IEnumerator<Character> WhereLevelHigher(int level)
         => _characters.Where<Character>(c => c.Rank > level).GetEnumerator();
     
     public IEnumerator<Character> OrderByLevel()
@@ -52,5 +51,12 @@ public class Party : IEnumerable<Character>
 
     public Character MaxLevel()
         => _characters.MaxBy(c => c.Rank);
+    
+    public IEnumerable<Character> GetWounded()
+    {
+        foreach (Character c in _characters)
+            if (c.Health < 50)
+                yield return c;
+    }
 
 }
